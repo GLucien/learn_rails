@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HiLove</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <style>
+      body{
+          padding:0;  /*去除内边距*/
+          border:0;   /*去除边框*/
+          margin:0;   /*去除外边距*/
+      }
+      .container-fluid{
+          width: 80%;
+      }
+      .body_content{
+          margin: 0 auto;
+          background-color: #45BCD2;
+      }
+      .navbar{
+          border-radius: 0px;
+          margin-bottom: 0px;
+       }
+    </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">HiLove</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#">功能介绍</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+              <li><a href="#">联系我们</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Sign In</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="body_content">
+        <%= yield %>
+      </div>
+  </body>
+</html>
