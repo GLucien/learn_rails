@@ -20,6 +20,6 @@
 .idea/
 Gemfile.lock
 log/*
-vendor/*
 public/assets/*
+public/uploads/*
 tmp/
