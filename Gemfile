@@ -58,5 +58,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 用户
 gem 'devise'
+gem 'devise-bootstrap-views'
 # 文件上传
 gem 'carrierwave'
