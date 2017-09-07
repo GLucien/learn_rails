@@ -61,3 +61,6 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 # 文件上传
 gem 'carrierwave'
+# 全文搜索
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
