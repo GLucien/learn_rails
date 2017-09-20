@@ -17,5 +17,10 @@ module HiLove
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
 
     config.i18n.default_locale = :"it"
+
+    config.generators do |cfg|
+      cfg.stylesheets     false
+      cfg.javascripts     false
+    end
   end
 end
