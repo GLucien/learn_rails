@@ -3,12 +3,41 @@
   <head>
     <title>Circles</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
   </head>
 
   <body>
-    <%= yield %>
+      <header name="top">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Circle</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><%= link_to '用户列表', users_path%></li>
+                <%if logged_in?%>
+                    <li><%=link_to "#{current_user.username},退出",session_path(current_user),method: :delete%></li>
+                <%else%>
+                    <li><%=link_to "登录",new_session_path%></li>
+                <%end%>
+                <li><%=link_to "博客",blogs_path %></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+      </header>
+      <div class="container">
+        <%if flash[:notice] %>
+            <div class="alert alert-info" role="alert"><%= flash[:notice]%></div>
+        <%end%>
+        <%= yield %>
+      </div>
+      <%= javascript_include_tag 'application' %>
+      <%= yield :javascripts %>
   </body>
 </html>

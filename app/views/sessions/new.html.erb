@@ -1,0 +1,34 @@
+<h1>用户登录</h1>
+
+<div class="row">
+  <div class="col-sm-5">
+    <%= form_tag sessions_path,remote: true, class: 'login_form' do%>
+        <div class="form-group">
+          <%= text_field_tag :username,'',{class: "form-control", placeholder: "用户名"}%>
+        </div>
+        <div class="form-group">
+          <%= password_field_tag :password,'',{class: "form-control", placeholder: "密码"}%>
+        </div>
+
+        <%= submit_tag "登录", class: 'btn btn-primary'%>
+        <%= link_to "注册", new_user_path,class: 'btn btn-default' %>
+    <%end%>
+  </div>
+</div>
+<% content_for :javascripts do%>
+    <script type="text/javascript">
+      /*
+      * 在rails５以后，默认使用的rails_ujs在ajax:success函数的参数只有event了
+      * json的返回值需要在event对象中获取
+      * 而不是之前jquery_ujs的event和data两个参数了
+      * */
+      $('.login_form').on('ajax:success',function(event){
+          var data = event.detail[0]
+          if(data.status == 'ok'){
+              window.location.href = data.msg.redirect_url
+          }else{
+              alert(data.msg)
+          }
+      })
+    </script>
+<%end%>

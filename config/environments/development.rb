@@ -26,8 +26,10 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # 指定无法发送电子邮件时是否抛出错误。默认为 true
+  # config.action_mailer.raise_delivery_errors = true
+  # 指定是否真的发送邮件，默认为 true
+  # config.action_mailer.perform_deliveries = true
 
   config.action_mailer.perform_caching = false
 

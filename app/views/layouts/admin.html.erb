@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Circles后台管理</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'application', media: 'all'%>
+</head>
+
+<body>
+    <header name="top">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Circles后台管理</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">Home</a></li>
+          <li><%= link_to '用户管理', admin_users_path%></li>
+          <li>
+            <%if logged_in?%>
+                <%=link_to "#{current_user.username},退出",session_path(current_user),method: :delete%>
+            <%else%>
+                <%=link_to "登录",new_user_path%>
+            <%end%>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</header>
+    <div class="container">
+      <%if flash[:notice] %>
+          <div class="alert alert-info" role="alert"><%= flash[:notice]%></div>
+      <%end%>
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag 'application' %>
+    <%= yield :javascripts %>
+</body>
+</html>

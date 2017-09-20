@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>标题</th>
+    <th>作者</th>
+    <th></th>
+  </tr>
+  <%@blogs.each do |blog|%>
+      <tr>
+        <td><%= blog.id%></td>
+        <td>
+          <%=link_to blog.title,blog_path(blog)%>
+          <% blog.tags.each do |tag|%>
+            <span class="label label-default"><%= tag.title%></span>
+          <% end %>
+        </td>
+        <td><%= blog.user.username%></td>
+        <td>
+          <% if blog.user == current_user%>
+            <%= blog.is_public ? '公开':'不公开'%>
+            <%= link_to "编辑",edit_blog_path(blog)%>
+          <% end %>
+        </td>
+      </tr>
+  <%end%>
+</table>
+<%= will_paginate @blogs%>
