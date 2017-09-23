@@ -1,4 +1,4 @@
-set :branch, 'master'
+set :branch, 'practice_cap'
 set :rails_env, 'production'
 set :deploy_to, "/var/www/shopping_production"
 
