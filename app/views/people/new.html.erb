@@ -1,0 +1,5 @@
+<%= form_for @person,url: people_path do |f|%>
+    <p>Username:<%=f.text_field :username%></p>
+    <p>Tags(Split By ",")<%= f.text_field :tag_names%></p>
+    <p><%= f.submit "Submit"%></p>
+<%end%>
